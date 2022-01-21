@@ -41,12 +41,18 @@
 
                             <!-- Top Header Content -->
                             <div class="top-header-meta d-flex">
-
-                                <!-- Login -->
+                                {% if user.is_authenticated %}
+                                <div class="login">
+                                    <a href="{% url 'logout' %}"><i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>Logout</span></a>
+                                </div>
+                                {% else %}
                                 <div class="login">
                                     <a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>
                                         <span>Login</span></a>
                                 </div>
+                                {% endif %}
+
                                 <!-- Cart -->
 
                             </div>

@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
+from django.views.generic import RedirectView
+from django.contrib.auth import logout as auth_logout
 
 # Create your views here.
 
@@ -26,3 +28,16 @@ class aboutPageView(TemplateView):
 
 class contactPageView(TemplateView):
    template_name = 'base/contact.html'
+
+
+class LogoutView(RedirectView):
+
+    """
+    Provides users the ability to logout
+    """
+    
+    url = '/login/'
+
+    def get(self, request, *args, **kwargs):
+        auth_logout(request)
+        return super(LogoutView, self).get(request, *args, **kwargs)
