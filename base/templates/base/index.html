@@ -14,20 +14,56 @@
                     <div class="col-12">
                         <!-- Post Content -->
                         <div class="">
-                            <form>
-                                <input type="text" class="form-control"
+                            <form method='GET'>
+                                <input type='text' name='q' value='{{ request.GET.q }}' type="text" class="form-control"
                                     style="background-color: inherit;border-radius: 20px; color:#fff;font-weight: bolder;padding-top: 25px;padding-bottom: 25px;">
+                                <!-- <input class="button" type='submit' value="Search Profile"> -->
                             </form>
+
                         </div>
-                        <div class="hero-slides-content text-center">
-                            <h2>Plants exist in the weather and light rays that surround them</h2>
+                        {% if object_list %}
+                        <div class="cart-area section-padding-0-100 clearfix">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="cart-table clearfix">
+                                            <table class="table table-responsive" style="color:#fff;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="color:#fff;">Name</th>
+                                                        <th style="color:#fff;">Bio-actiave compound</th>
+                                                        <th style="color:#fff;">Uses</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for i in object_list%}
+                                                    <tr>
+
+                                                        <td style="color:#fff;">
+                                                            {{i.name}}
+                                                        </td>
+                                                        <td style="color:#fff;" class="price">
+                                                            <span>{{i.bioactive_compound}}</span></td>
+                                                        <td style="color:#fff;" class="total_price">
+                                                            <span>{{i.uses}}</span></td>
+
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endif%}
+                                <div class="hero-slides-content text-center">
+                                    <h2>Plants exist in the weather and light rays that surround them</h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-    </div>
+            </div>
 </section>
 <!-- ##### Hero Area End ##### -->
 {%endblock content%}
