@@ -108,10 +108,15 @@ class RegisterPage(FormView):
             login(self.request, user)
         return super(RegisterPage, self).form_valid(form)
 
-    # def get(self, *args, **kwargs):
-    #     if self.request.user.is_authenticated:
-    #         return redirect('register')
-    #     return super(RegisterPage, self).get(*args, **kwargs)
+
+class CreatePlant(FormView):
+    template_name = 'createplant.html'
+    form_class = PlantForm
+    success_url = reverse_lazy('dashboard')
+
+    def form_valid(self, form):
+        user = form.save()
+        return super(CreatePlant, self).form_valid(form)
 
 
 def ScrapeView(request):

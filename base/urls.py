@@ -12,5 +12,6 @@ urlpatterns = [
     path('edit/<slug:slug>/', EditPlant.as_view(), name='edit'),
     path('delete/<slug:slug>/', DeletePlant.as_view(), name="delete"),
     path('register/', RegisterPage.as_view(), name="register"),
-    path('scrape/', ScrapeView, name="scrape")
+    path('scrape/', ScrapeView, name="scrape"),
+    path('create_plant',CreatePlant.as_view(), name="plant")
 ]
